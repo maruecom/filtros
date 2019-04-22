@@ -1,80 +1,74 @@
 
-var form = document.querySelector("form");
+// Tenemos un listado de productos
 
-
-
-
-form.onsubmit = function (e){
-    var nombre = document.getElementById("username");
-    e.preventDefault();   
-    //console.log(nombre.value);
-    if (nombre.value.length < 3) {
-        nombre.classList.add("malEscrito")
-    } else {
-        alert("Bienvenida");
-        
-    }
-    var apellido = document.getElementById("pass");
-    var numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,];
-   //console.log(apellido.value);
-   if (pass.value.length < 8) {
-       for (var i = 0; i < pass.value.length; i++) {
-           //console.log(pass.value[i]);
-       }
-       for (var j = 0; j < numeros.length; j++) {
-        //console.log(numeros[j]); 
-           
-    }
-    
-    if (pass.value[i] == numeros[j]) {
-        alert(envio);
-    } else{
-        pass.classList.add("malEscrito");
-    }
+var productos = [
+    {nombre: "Zapato negro", tipo: "zapato", color: "negro", img: "./taco-negro.jpg"},
+    {nombre: "Zapato azul", tipo: "zapato", color: "azul", img: "./taco-azul.jpg"},
+    {nombre: "Bota negra", tipo: "bota", color: "negro", img: "./bota-negra.jpg"},
+    {nombre: "Bota azul", tipo: "bota", color: "azul", img: "./bota-azul.jpg"},
+    {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
+  ]
   
-   }
-   
-
-}
-
-
-
-
-
-form.onsubmit = function(evento) {
- evento.preventDefault();
-console.log(select.options);  // retorna la colección de elementos options
-console.log(select.selectedIndex);  // retorna el índice del valor seleccionado
-var indice = select.selectedIndex
-select.options[indice]; // retorna el option seleccionado
-console.log(select.options[indice]); // retorna el elemento seleccionado.
-console.log(select.options[indice].value); // retorna el valor del elemento seleccionado.
-}
-
-
-var checkboxes = document.getElementById("check")
-var gato = checkboxes[0]; //manera cabeza de interactuar con las opciones dek checkbox
-var perro = checkboxes[1];
-var gato = document.querySelector("checked:input") // selecciona todos los que eligió el usuario
-
-
-console.log(gato.checked);
-console.log(gato.value);
-
-
-
-
-
-/* Tarea: formulario
-Input que pida el nombre
-- Si el nombre tiene menos de 3 caracteres,
-al enviar el formulario se pone rojo
-
-Input que pida un password
-- Si el password tiene menos de 8 caracteres
-o no tiene ningun numero, al enviar
-el formulario se pone en rojo
-
-- Select de opciones (mascotas, pokemones, etc)
-Al enviar el form, si esta bien todo, navegamos a
-la opcion seleccionada */
+  
+  
+  
+  
+  
+  
+  // Seleccionamos el listado apenas empezamos, porque
+  // queremos tener esta variable disponible en todo nuestro codigo
+  var listado = document.getElementById("lista-de-productos")
+  
+  
+  
+  
+  
+  
+  // Para mostrarlos, recorremos el listado con un for 
+  for (let i = 0; i < productos.length; i++) {
+    // Creamos un div, le añadimos el nombre y la imagen 
+    var div = document.createElement("div")
+    div.classList.add("producto")
+  
+    var titulo = document.createElement("p")
+    titulo.classList.add("titulo")
+    titulo.textContent = productos[i].nombre
+    
+    var imagen = document.createElement("img");
+    imagen.setAttribute('src', productos[i].img);
+  
+    div.appendChild(titulo)
+    div.appendChild(imagen)
+  
+    // Agregamos el div al listado 
+    listado.appendChild(div)
+  }
+  
+  
+  var botonDeFiltro = document.querySelector("button")
+  
+  botonDeFiltro.onclick = function() {
+  
+    // primero, recorremos con un while todos los "hijos" del listado
+    // y los borramos
+  
+    while (listado.firstChild) {
+      listado.removeChild(listado.firstChild);
+  }
+  
+  // despues les toca a uds el resto :)
+  
+  
+  
+  }
+  
+  
+  // Tarea: 
+  // Si el usuario escribe "zapato", mostrar los zapatos
+  // Si el usuario escribe "bota", mostrar las botas
+  // Si el usuario escribe "negro", mostrar el zapato y la bota negros
+  // Si el usuario escribe "azul", mostrar el zapato y la bota azules
+  
+  
+  // Para puntos extra:
+  // Dejar la pagina mas linda con CSS 

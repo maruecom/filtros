@@ -22,3 +22,8 @@ input {
     width: 70%;
     height: auto
   }
+
+  .titulo{
+    font-family: 12px roboto;
+    color: #000;
+  }
